@@ -17,3 +17,5 @@ Route::get('/', 'HomeController@showWelcome');
 // {
 // 	return View::make('hello');
 // });
+
+Route::resource('trucks', 'TrucksController');
