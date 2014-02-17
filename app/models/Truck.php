@@ -15,5 +15,15 @@ class Truck extends Eloquent {
         'name' => 'string',
         'email' => 'email',
         'blurb' => 'text'
-    );
+  );
+
+  public function location()
+  {
+    return $this->hasOne('Location');
+  }
+
+  public function menu()
+  {
+    return $this->hasOne('Menu');
+  }
 }

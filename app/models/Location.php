@@ -8,4 +8,10 @@ class Location extends Eloquent {
     'latitude' => 'required',
     'logitude' => 'required'
    );
+
+  public function truck()
+  {
+    $this->belongsTo('Truck');
+  }
+
 }

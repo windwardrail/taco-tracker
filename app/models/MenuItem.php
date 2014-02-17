@@ -10,4 +10,9 @@ class MenuItem extends Eloquent {
 		'price' => 'required',
 		'picture_url' => 'required'
 	);
+
+  public function menu()
+  {
+    $this->belongsTo('Menu');
+  }
 }
