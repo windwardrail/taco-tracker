@@ -10,4 +10,10 @@ class Truck extends Eloquent {
 		'picture_url' => 'url',
 		'website_url' => 'url'
 	);
+
+  public static $factory = array(
+        'name' => 'string',
+        'email' => 'email',
+        'blurb' => 'text'
+    );
 }
