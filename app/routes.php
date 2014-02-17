@@ -21,3 +21,5 @@ Route::get('/', 'HomeController@showWelcome');
 Route::resource('trucks', 'TrucksController');
 
 Route::resource('menus', 'MenusController');
+
+Route::resource('menu_items', 'MenuItemsController');
