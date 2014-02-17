@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@showWelcome');
+Route::get('/', 'TacosController@index');
 
 // Route::get('/', function()
 // {

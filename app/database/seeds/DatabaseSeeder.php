@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('TrucksTableSeeder');
 		$this->call('MenusTableSeeder');
 		$this->call('Menu_itemsTableSeeder');
+		$this->call('LocationTableSeeder');
 	}
 
 }

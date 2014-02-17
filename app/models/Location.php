@@ -11,7 +11,7 @@ class Location extends Eloquent {
 
   public function truck()
   {
-    $this->belongsTo('Truck');
+    return $this->belongsTo('Truck');
   }
 
 }

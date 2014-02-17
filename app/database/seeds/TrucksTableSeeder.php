@@ -8,9 +8,9 @@ class TrucksTableSeeder extends Seeder {
 		DB::table('trucks')->truncate();
 
 		$trucks = array(
-        ['name' => 'Super Mario\'s', 'email' => 'mario@tacomail.com', 'blurb' => 'Getting hungry yet? Yes!'],
-        ['name' => 'Diego\'s', 'email' => 'diego@tacomail.com', 'blurb' => 'Hmmm, a bit pricy.'],
-        ['name' => 'Tapatio\'s Tacos', 'email' => 'mr_t@tacomail.com', 'blurb' => 'Everyone needs some vitamin T!'],
+        ['name' => 'Super Mario\'s', 'email' => 'mario@tacomail.com', 'blurb' => 'Getting hungry yet? Yes!', 'id' => 1],
+        ['name' => 'Diego\'s', 'email' => 'diego@tacomail.com', 'blurb' => 'Hmmm, a bit pricy.', 'id' => 2],
+        ['name' => 'Tapatio\'s Tacos', 'email' => 'mr_t@tacomail.com', 'blurb' => 'Everyone needs some vitamin T!', 'id' => 3],
 		);
 
 		// Uncomment the below to run the seeder

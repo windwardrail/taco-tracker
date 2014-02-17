@@ -1,7 +1,9 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem "guard"
-gem "guard-compass"
-gem "guard-livereload"
-# gem "guard-phpunit"
+group :development do
+  gem 'guard'
+  gem 'guard-compass'
+  gem 'guard-livereload'
+  gem 'guard-coffeescript'
+end
