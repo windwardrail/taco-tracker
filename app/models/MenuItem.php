@@ -6,9 +6,7 @@ class MenuItem extends Eloquent {
 	public static $rules = array(
 		'menu_id' => 'required',
 		'name' => 'required',
-		'description' => 'required',
-		'price' => 'required',
-		'picture_url' => 'required'
+		'price' => 'required'
 	);
 
   public function menu()

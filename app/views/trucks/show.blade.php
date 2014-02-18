@@ -2,38 +2,42 @@
 
 @section('main')
 
-<h1>Show Truck</h1>
+<div class="row page-header">
 
-<p>{{ link_to_route('trucks.index', 'Return to all trucks') }}</p>
+  <div class="span1">
+      <img src="{{  $truck->logo_url or asset('images/truck.svg') }}" alt="Logo">
+  </div>
 
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>Name</th>
-				<th>Email</th>
-				<th>Logo_url</th>
-				<th>Picture_url</th>
-				<th>Blurb</th>
-				<th>Website_url</th>
-		</tr>
-	</thead>
+  <div class="span11">
+    <h1>{{{ $truck->name }}}</h1>
+  </div>
 
-	<tbody>
-		<tr>
-			<td>{{{ $truck->name }}}</td>
-					<td>{{{ $truck->email }}}</td>
-					<td>{{{ $truck->logo_url }}}</td>
-					<td>{{{ $truck->picture_url }}}</td>
-					<td>{{{ $truck->blurb }}}</td>
-					<td>{{{ $truck->website_url }}}</td>
-                    <td>{{ link_to_route('trucks.edit', 'Edit', array($truck->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('trucks.destroy', $truck->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
-		</tr>
-	</tbody>
-</table>
+</div>
+
+
+
+<div class="row">
+
+  <div class="span6">
+    <div class="well">
+      <h1 class="text-center">Menu</h1>
+      <hr>
+      @if($truck->menu->items)
+        @include('menus.show', ['menu' => $truck->menu])
+      @else
+        <p>You'll just have to go see for yourself...</p>
+      @endif
+    </div>
+  </div>
+
+  <div class="span6">
+    <img src="{{ $truck->picture_url or asset('images/truck.svg') }}" alt="Taco truck picture">
+    <hr>
+    <blockquote>
+      <p class="text-warning">{{ $truck->blurb }}</p>
+    </blockquote>
+  </div>
+
+</div>
 
 @stop

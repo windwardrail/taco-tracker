@@ -1,29 +1,17 @@
-@extends('layouts.scaffold')
+<ul>
+  @foreach($menu->items as $item)
+    <li>
+      <div class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object" src="{{ $item->picture_url or asset('images/taco.png') }}" width="64" height="64">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">{{ $item->name }} <small>${{ money_format("%i", $item->price) }}</small> </h4>
+          <p>{{ $item->description }}</p>
 
-@section('main')
+        </div>
+      </div>
+    </li>
+  @endforeach
 
-<h1>Show Menus</h1>
-
-<p>{{ link_to_route('menus.index', 'Return to all menus') }}</p>
-
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>Truck_id</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>{{{ $menu->truck_id }}}</td>
-                    <td>{{ link_to_route('menus.edit', 'Edit', array($menu->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('menus.destroy', $menu->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
-		</tr>
-	</tbody>
-</table>
-
-@stop
+</ul>

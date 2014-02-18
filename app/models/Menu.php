@@ -7,7 +7,7 @@ class Menu extends Eloquent {
 		'truck_id' => 'required'
 	);
 
-  public function menu_items()
+  public function items()
   {
     return $this->hasMany('MenuItem');
   }
