@@ -1,17 +1,21 @@
 @extends('layouts.scaffold')
 
 @section('main')
+  <div id="map-canvas"></div>
+  <script>
+    var truck_locations = [];
+  </script>
+  @foreach ($locations as $location)
+    <script>
+    truck_locations.push({
+      name: "{{ $location->truck->name }}",
+      latitude: {{{ $location->latitude }}},
+      longitude: {{{ $location->longitude }}},
+      id: {{{ $location->truck->id }}}
+    });
+    </script>
+  @endforeach
 
-<h1>Trucks</h1>
-  <ol>
-    @foreach($locations as $location)
-      <li>
-        <ul>
-          <li>Latitude: {{{ $location->latitude }}}</li>
-          <li>Logitude: {{{ $location->longitude }}}</li>
-          <li> {{ link_to_route('trucks.show', $location->truck->name, $location->truck->id) }} </li>
+  {{ HTML::script('javascripts/tacos.js') }}
 
-        </ul>
-      </li>
-    @endforeach
-  </ol>
+@stop
