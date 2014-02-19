@@ -1,19 +1,12 @@
 (function() {
-  var MY_MAPTYPE_ID, bellingham, black_hue, green_hue, initialize, setMarkers, truck_locations;
+  var MY_MAPTYPE_ID, bellingham, black_hue, green_hue, initialize, setMarkers,
+    _this = this;
 
   bellingham = new google.maps.LatLng(48.755433, -122.478819);
 
   green_hue = '#007D1C';
 
   black_hue = '#000000';
-
-  truck_locations = [
-    {
-      name: 'mario\'s',
-      latitude: '48.749543',
-      longitude: '-122.473016'
-    }
-  ];
 
   MY_MAPTYPE_ID = 'radar_style';
 
@@ -49,7 +42,7 @@
       }
     ];
     mapOptions = {
-      zoom: 14,
+      zoom: 15,
       center: bellingham,
       mapTypeControlOptions: {
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
