@@ -60,6 +60,7 @@ return array(
         'password' => getenv('DB_PASS'),
         'charset'  => 'utf8',
         'prefix'   => '',
+				'collation' => 'utf8_unicode_ci',
     ),
 
 	),
@@ -101,6 +102,5 @@ return array(
 	),
 
 
-	'collation' => 'utf8_unicode_ci',
 
 );
