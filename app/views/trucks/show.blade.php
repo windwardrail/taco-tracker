@@ -22,7 +22,7 @@
     <div class="well">
       <h1 class="text-center">Menu</h1>
       <hr>
-      @if($truck->menu->items)
+      @if($truck->menu and $truck->menu->items)
         @include('menus.show', ['menu' => $truck->menu])
       @else
         <p>You'll just have to go see for yourself...</p>
