@@ -54,10 +54,10 @@ return array(
 
 		'production' => array(
         'driver'   => 'mysql',
-        'host'     => getenv('DB_HOST'),
-        'database' => getenv('DB_NAME'),
-        'username' => getenv('DB_USER'),
-        'password' => getenv('DB_PASS'),
+        'host'     => getenv('DB1_HOST'),
+        'database' => getenv('DB1_NAME'),
+        'username' => getenv('DB1_USER'),
+        'password' => getenv('DB1_PASS'),
         'charset'  => 'utf8',
         'prefix'   => '',
 				'collation' => 'utf8_unicode_ci',

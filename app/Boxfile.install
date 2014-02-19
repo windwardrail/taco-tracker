@@ -1,0 +1,34 @@
+global:
+  env:
+    - LARAVEL_ENV: production
+web1:
+  name: taco-tracker
+  shared_writable_dirs:
+    - app/storage/cache
+    - app/storage/database
+    - app/storage/logs
+    - app/storage/sessions
+    - app/storage/views
+    - app/storage/work
+    - app/storage/meta
+  document_root: /public
+  php_version: 5.4.14
+  php_extensions:
+    - pdo_mysql
+    - mcrypt
+    - memcached
+    - curl
+  before_deploy:
+    - "php artisan migrate:install"
+    - "php artisan migrate"
+    - "php artisan db:seed"
+  after_deploy:
+    - "rm -f storage/cache/*"
+    - "rm -f storage/views/*"
+  after_build:
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --no-dev --prefer-source"
+
+cache1:
+  type: memcached
+db1:
+  type: mysql
