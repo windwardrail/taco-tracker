@@ -1,67 +1,67 @@
-(function() {
-  var MY_MAPTYPE_ID, bellingham, black_hue, green_hue, initialize, setMarkers,
-    _this = this;
+var MY_MAPTYPE_ID, bellingham, black_hue, green_hue, initialize, setMarkers, truck_locations;
 
-  bellingham = new google.maps.LatLng(48.755433, -122.478819);
+    // var map;
+bellingham = new google.maps.LatLng(48.755433, -122.478819);
 
-  green_hue = '#007D1C';
+green_hue = '#007D1C';
 
-  black_hue = '#000000';
+black_hue = '#000000';
 
-  MY_MAPTYPE_ID = 'radar_style';
+var MY_MAPTYPE_ID = 'radar_style';
 
-  initialize = function() {
-    var customMapType, featureOpts, map, mapOptions, styledMapOptions;
-    featureOpts = [
-      {
-        stylers: [
-          {
-            hue: green_hue
-          }, {
-            visibility: 'simplified'
-          }, {
-            gamma: 0.1
-          }, {
-            weight: 0.4
-          }
-        ]
-      }, {
-        elementType: 'labels',
-        stylers: [
-          {
-            visibility: 'off'
-          }
-        ]
-      }, {
-        featureType: 'water',
-        stylers: [
-          {
-            color: black_hue
-          }
-        ]
-      }
-    ];
-    mapOptions = {
-      zoom: 15,
-      center: bellingham,
-      mapTypeControlOptions: {
-        mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
-      },
-      mapTypeId: MY_MAPTYPE_ID
-    };
-    map = new google.maps.Map($('#map-canvas')[0], mapOptions);
-    styledMapOptions = {
-      name: 'Taco Radar'
-    };
-    customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-    map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
-    return setMarkers(map, truck_locations);
+initialize = function() {
+  var customMapType, featureOpts, map, mapOptions, styledMapOptions;
+
+  featureOpts = [
+    {
+      stylers: [
+        { hue: green_hue },
+        { visibility: 'simplified' },
+        { gamma: 0.1 },
+        { weight: 0.4 }
+      ]
+    },
+    {
+      elementType: 'labels',
+      stylers: [
+        { visibility: 'off' }
+      ]
+    },
+    {
+      featureType: 'water',
+      stylers: [
+        { color: black_hue }
+      ]
+    }
+  ];
+
+  mapOptions = {
+    zoom: 15,
+    center: bellingham,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+    },
+    mapTypeId: MY_MAPTYPE_ID
   };
 
-  setMarkers = function(map, locations) {
+  map = new google.maps.Map($("#map-canvas")[0],
+      mapOptions);
+
+  var styledMapOptions = {
+    name: 'Taco Radar'
+  };
+
+  var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+  map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+  return setMarkers(map, truck_locations);
+
+}
+
+setMarkers = function(map, locations) {
     var image, location, shape, _i, _len, _results;
     image = {
-      url: 'images/taco_ping.png',
+      url: 'taco_ping.png',
       size: new google.maps.Size(64, 56),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(28, 32)
@@ -80,6 +80,7 @@
           position: truck_coord,
           map: map,
           icon: image,
+          // shape: shape,
           title: location.name
         });
       })(location));
@@ -87,8 +88,7 @@
     return _results;
   };
 
-  $(function() {
+// google.maps.event.addDomListener(window, 'load', initialize);
+$(function() {
     return initialize();
   });
-
-}).call(this);
