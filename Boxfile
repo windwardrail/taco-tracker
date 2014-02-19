@@ -19,8 +19,9 @@ web1:
     - memcached
     - curl
   before_deploy:
-    - "php artisan migrate"
-    - "php artisan db:seed"
+    - "php artisan migrate:install --env=production"
+    - "php artisan migrate --env=production"
+    - "php artisan db:seed --env=production"
   after_deploy:
     - "rm -f storage/cache/*"
     - "rm -f storage/views/*"
