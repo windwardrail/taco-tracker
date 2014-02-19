@@ -28,7 +28,15 @@ $env = $app->detectEnvironment(array(
 
 	'local' => array('your-machine-name'),
 
+
+
 ));
+
+
+$env = $app->detectEnvironment(function () {
+    return isset($_SERVER['LARAVEL_ENV'])
+        ? $_SERVER['LARAVEL_ENV']
+        : 'development'; // or whatever fallback you prefer
 
 /*
 |--------------------------------------------------------------------------
