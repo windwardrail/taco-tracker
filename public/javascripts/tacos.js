@@ -61,7 +61,7 @@ initialize = function() {
 setMarkers = function(map, locations) {
     var image, location, shape, _i, _len, _results;
     image = {
-      url: 'taco_ping.png',
+      url: 'images/taco_ping.png',
       size: new google.maps.Size(64, 56),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(28, 32)
