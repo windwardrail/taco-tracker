@@ -26,8 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('localhost'),
-  'production' => array('taco-tracker.gopagoda.com')
+	'local' => array('your-machine-name'),
 
 ));
 

@@ -4,12 +4,12 @@ global:
 web1:
   name: taco-tracker
   shared_writable_dirs:
-    - /storage/cache
-    - /storage/database
-    - /storage/logs
-    - /storage/sessions
-    - /storage/views
-    - /storage/work
+    - app/storage/cache
+    - app/storage/database
+    - app/storage/logs
+    - app/storage/sessions
+    - app/storage/views
+    - app/storage/work
   document_root: /public
   php_version: 5.4.14
   php_extensions:
@@ -18,7 +18,6 @@ web1:
     - memcached
     - curl
   before_deploy:
-    - "php artisan migrate:install"
     - "php artisan migrate"
     - "php artisan db:seed"
   after_deploy:
