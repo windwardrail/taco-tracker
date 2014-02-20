@@ -1,5 +1,5 @@
 (function() {
-  var MY_MAPTYPE_ID, bellingham, black_hue, green_hue, initialize, setMarkers,
+  var MY_MAPTYPE_ID, bellingham, black_hue, calibrateRadarOverlay, calibrateSweep, green_hue, initialize, rotateSweep, setMarkers,
     _this = this;
 
   bellingham = new google.maps.LatLng(48.755433, -122.478819);
@@ -13,7 +13,7 @@
   MY_MAPTYPE_ID = 'radar_style';
 
   initialize = function() {
-    var customMapType, featureOpts, map, mapOptions, styledMapOptions;
+    var customMapType, featureOpts, map, mapOptions, ro, styledMapOptions, sw;
     featureOpts = [
       {
         stylers: [
@@ -57,7 +57,17 @@
     };
     customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
     map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
-    return setMarkers(map, truck_locations);
+    setMarkers(map, truck_locations);
+    ro = $('#radar_overlay');
+    sw = $('#sweep');
+    sw.fadeTo(0, 0.5);
+    calibrateRadarOverlay(ro);
+    calibrateSweep(sw);
+    rotateSweep(sw);
+    return $(window).resize(function() {
+      calibrateRadarOverlay(ro);
+      return calibrateSweep(sw);
+    });
   };
 
   setMarkers = function(map, locations) {
@@ -91,6 +101,42 @@
       })(location));
     }
     return _results;
+  };
+
+  calibrateRadarOverlay = function(overlay) {
+    var aspect, h, hr, left, top, w;
+    h = $(window).height();
+    w = $(window).width();
+    hr = 900 / 1600;
+    aspect = 1600 / 2000;
+    overlay.height(h / hr);
+    overlay.width(overlay.height() / aspect);
+    top = -(overlay.height() - h) / 2;
+    left = -(overlay.width() - w) / 2;
+    return overlay.offset({
+      top: top,
+      left: left
+    });
+  };
+
+  calibrateSweep = function(sweep) {
+    var h, w;
+    h = $(window).height();
+    w = $(window).width();
+    sweep.height(h);
+    sweep.width(h);
+    return sweep.offset({
+      top: 0,
+      left: (w - h) / 2
+    });
+  };
+
+  rotateSweep = function(sweep) {
+    return sweep.animate({
+      rotate: '360'
+    }, 3000, 'linear', function() {
+      return rotateSweep(sweep);
+    });
   };
 
   $(function() {
