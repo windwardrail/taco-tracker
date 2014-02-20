@@ -1,6 +1,7 @@
 bellingham = new google.maps.LatLng(48.755433, -122.478819)
 green_hue = '#007D1C'
 black_hue = '#000000'
+window.markers = []
 
 MY_MAPTYPE_ID = 'radar_style'
 
@@ -72,6 +73,10 @@ setMarkers = (map, locations) =>
         icon: image,
         # shape: shape,
         title: location.name
+      window.markers.push(marker)
+      google.maps.event.addListener(marker, 'click', ->
+        window.location.assign('/trucks/'+location.id)
+        )
 
 $ =>
   initialize()
