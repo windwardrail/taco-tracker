@@ -67,9 +67,9 @@ class MenuItemsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$menu_item = $this->menu_item->findOrFail($id);
+		$item = $this->menu_item->findOrFail($id);
 
-		return View::make('menu_items.show', compact('menu_item'));
+		return View::make('menu_items.show', compact('item'));
 	}
 
 	/**

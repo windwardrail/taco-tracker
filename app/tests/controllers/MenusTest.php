@@ -66,6 +66,8 @@ class MenusTest extends TestCase {
 				   ->once()
 				   ->andReturn($this->attributes);
 
+		$this->attributes->items = [];
+
 		$this->call('GET', 'menus/1');
 
 		$this->assertViewHas('menu');

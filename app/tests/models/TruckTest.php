@@ -12,6 +12,7 @@ class TruckTest extends TestCase {
   {
     // Arrange
     $attrs = $this->factory->attributesFor('Truck', ['name' => '']);
+    // dd($attrs);
     // var_dump($attrs);
     $validation = Validator::make($attrs, Truck::$rules);
 

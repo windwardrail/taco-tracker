@@ -66,6 +66,8 @@ class TrucksTest extends TestCase {
 				   ->once()
 				   ->andReturn($this->attributes);
 
+		$this->attributes->menu = [];
+
 		$this->call('GET', 'trucks/1');
 
 		$this->assertViewHas('truck');

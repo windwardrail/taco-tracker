@@ -68,7 +68,7 @@ class MenuItemsTest extends TestCase {
 
 		$this->call('GET', 'menu_items/1');
 
-		$this->assertViewHas('menu_item');
+		$this->assertViewHas('item');
 	}
 
 	public function testEdit()
