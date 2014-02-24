@@ -132,11 +132,12 @@
   };
 
   rotateSweep = function(sweep) {
-    return sweep.animate({
+    sweep.animate({
       rotate: '360'
     }, 3000, 'linear', function() {
       return rotateSweep(sweep);
     });
+    return calibrateSweep(sweep);
   };
 
   $(function() {

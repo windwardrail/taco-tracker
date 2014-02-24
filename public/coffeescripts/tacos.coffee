@@ -114,6 +114,7 @@ calibrateSweep = (sweep) ->
 
 rotateSweep = (sweep) ->
   sweep.animate({rotate: '360'}, 3000, 'linear', -> rotateSweep(sweep))
+  calibrateSweep(sweep)
 
 
 $ =>
